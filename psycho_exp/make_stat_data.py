@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from stat-data import get as g
+from stat_data import get as g
 from natsort import natsorted
 path='.'
 

@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from natsort import natsorted
-from stat-data import get as g
+from stat_data import get as g
 
 path= 'data'
 
