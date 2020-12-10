@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from natsort import natsorted
-import util as u
+from stat-data import get as g
 
 path= 'data'
 
@@ -46,10 +46,10 @@ for d in data_list:
 
     aldata=list()
     for f in range(len(dt)):
-        aldata.append(u.readtitleparam(dt[f])+[da[f].replace('\n','')])
+        aldata.append(g.readtitleparam(dt[f])+[da[f].replace('\n','')])
 
     pp=2;vp=3;rs=4
-    sysparam, nump=u.get_sysparam(aldata, [0,1,2,3])
+    sysparam, nump=g.get_sysparam(aldata, [0,1,2,3])
 
     print(sysparam)
     print(nump)

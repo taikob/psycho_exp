@@ -1,6 +1,6 @@
 import os
 import numpy as np
-import util as u
+from stat-data import get as g
 from natsort import natsorted
 path='.'
 
@@ -14,7 +14,7 @@ for dir in natsorted(os.listdir(path)):
     if '_vrot.txt' in dir:
         data = np.loadtxt(path+'/'+dir)
         data = float(data)
-        tprm=u.readtitleparam(dir)
+        tprm=g.readtitleparam(dir)
         if cn==1:
             out=np.append(out,np.array([[int(tprm[0]),data]]), axis=0)
         elif cn==2:
