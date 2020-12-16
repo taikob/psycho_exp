@@ -21,4 +21,4 @@ for dir in natsorted(os.listdir(path)):
             print([int(tprm[0]),int(tprm[1]),data])
             out=np.append(out,np.array([[int(tprm[0]),int(tprm[1]),data]]), axis=0)
 
-np.savetxt(path+'/'+'vrot_stat_data.csv', out)
+np.savetxt(path+'/'+'vrot_stat_data.csv', out, delimiter=',')
