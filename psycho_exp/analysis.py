@@ -9,8 +9,9 @@ def get_filename(path):
 
     data_list=list()
 
+
     for d in natsorted(os.listdir(path)):
-        if not '_ans' in d and os.path.isfile(d) and '.txt' in d:
+        if not '_ans' in d and os.path.isfile(path+'/'+d) and '.txt' in d:
             d=d.replace('_'+d.split('_')[-1],'')
             if not d in data_list: data_list.append(d)
 
@@ -19,10 +20,8 @@ def get_filename(path):
 def combine_txt(file,path):
     number_list=list()
     for d in natsorted(os.listdir(path)):
-        if not '_ans' in d and os.path.isfile(d) and '.txt' in d and file in d:
+        if not '_ans' in d and os.path.isfile(path+'/'+d) and '.txt' in d and file in d:
             number_list.append(d.replace(file,'').replace('.txt',''))
-
-    print(number_list)
 
     with open(path + '/' + file + '.txt', 'w') as tx:
         with open(path+'/'+file + '_ans.txt','w') as an:
@@ -33,22 +32,19 @@ def combine_txt(file,path):
                 for a in ane: an.write(a+'\n')
 
 data_list=get_filename(path)
-
 for d in data_list:
 
-    print(d)
 
     combine_txt(d,path)
     d=path+'/'+d+'.txt'
-
     with open(d,'r') as f: dt = f.readlines()
-    with open(d.replace('.txt','_ans.txt'),'r') as g: da = g.readlines()
+    with open(d.replace('.txt','_ans.txt'),'r') as a: da = a.readlines()
 
     aldata=list()
     for f in range(len(dt)):
         aldata.append(g.readtitleparam(dt[f])+[da[f].replace('\n','')])
 
-    pp=2;vp=3;rs=4
+    pp=2;vp=3;rs=4 #pp:original or mirror, vp: variable parameter(rotate speed), rs: answer
     sysparam, nump=g.get_sysparam(aldata, [0,1,2,3])
 
     print(sysparam)
@@ -75,5 +71,4 @@ for d in data_list:
     for row in range(nump[pp]):
         data[:,row+1]=datalist[row]
 
-    print(data)
     np.savetxt(d.replace('.txt','_data'+'.txt'), data)

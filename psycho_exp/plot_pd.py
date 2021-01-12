@@ -35,12 +35,13 @@ for dir in natsorted(os.listdir(path)):
 
         ydata = data[:, 1:data.shape[1]]
         plt.ylim(0, 1)
+        plt.xlim(-5, 5)
         vrot = 0
         for yn in range(1, data.shape[1]):
             if yn==1:clr='red'
             else: clr='blue'
 
-            param_bounds= ((min(data[:, 0]), 0), (max(data[:, 0]), max(data[:, 0])))
+            param_bounds= ([min(data[:, 0]), 0], [max(data[:, 0]), max(data[:, 0])])
             coef, flag = so.curve_fit(model, data[:, 0], data[:, yn],  bounds=param_bounds)
             xvec=np.linspace(min(data[:, 0]), max(data[:, 0]), 100)
             fnp=model(xvec, coef[0], coef[1])
