@@ -4,6 +4,7 @@ from natsort import natsorted
 import matplotlib.pyplot as plt
 import math
 import scipy.optimize as so
+from stat_data import get as g
 
 path='data'
 
@@ -57,3 +58,5 @@ for dir in natsorted(os.listdir(path)):
 
         vrot/=2
         np.savetxt(path+'/'+dir.replace('_data.txt','_vrot.txt'), np.array([vrot]))
+
+g.file_param(path,'_vrot.txt')
